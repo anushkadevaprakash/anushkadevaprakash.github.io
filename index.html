@@ -200,6 +200,9 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
 /* maximised windows: fill the page and centre the content */
 .win[data-maxed="1"] .body{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:auto;}
 .win[data-maxed="1"] .body > *{width:100%;max-width:1000px;flex-shrink:0;}
+/* skywatch has a grid + iframe, so maximise it as normal flow, not force-centred */
+#sky[data-maxed="1"] .body{display:block;}
+#sky[data-maxed="1"] .body > *{max-width:760px;margin:0 auto;}
 </style>
 </head>
 <body>
