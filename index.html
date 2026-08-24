@@ -190,13 +190,16 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
 .pub p{font-size:14px;line-height:1.5;margin:0 0 10px;color:#2a2028;}
 .pub-actions a{display:inline-block;margin-right:12px;font-size:13px;font-weight:bold;color:#a5316f;text-decoration:none;}
 .pub-actions a:hover{text-decoration:underline;}
-#welcome .intro{font-family:var(--pixel);font-size:18px;color:#c9006e;line-height:1.35;text-align:center;margin:10px 2px 4px;}
+#welcome .intro{font-family:var(--pixel);font-size:18px;color:#c9006e;line-height:1.35;text-align:left;margin:10px 2px 4px;}
 #welcome .intro p{margin:0 0 8px;}
 #welcome .intro p:last-child{margin-bottom:0;}
 /* welcome entrance animation */
 @keyframes winIn{from{opacity:0;transform:translateY(-16px);}to{opacity:1;transform:translateY(0);}}
 #welcome.open{animation:winIn .5s ease-out both;}
 @media (prefers-reduced-motion:reduce){#welcome.open{animation:none;}}
+/* maximised windows: fill the page and centre the content */
+.win[data-maxed="1"] .body{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:auto;}
+.win[data-maxed="1"] .body > *{width:100%;max-width:1000px;flex-shrink:0;}
 </style>
 </head>
 <body>
