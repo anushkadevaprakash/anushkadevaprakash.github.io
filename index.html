@@ -555,10 +555,10 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
   var Music=(function(){
     var ac=null, master=null, lp=null, noiseBuf=null, flutter=null, flutterOut=null, delayIn=null, sfxOut=null;
     var playing=false, muted=false, vol=0.30, timer=null, step=0, nextTime=0;
-    var BPM=62, eighth=60/BPM/2, look=0.1, tickMs=25;
-    var prog=[[60,64,67,71,74],[57,60,64,67,71],[53,57,60,64,67],[55,59,62,65,69]]; // Cmaj9 Am9 Fmaj9 G9 (lush)
-    var bassRoots=[36,45,41,43];
-    var pent=[64,67,71,72,74,76]; // music-box bells (E G B C D E)
+    var BPM=52, eighth=60/BPM/2, look=0.1, tickMs=25;
+    var prog=[[57,60,64,67,71],[53,57,60,64,67],[48,52,55,59,62],[52,55,59,62,66]]; // Am9 Fmaj7 Cmaj7 Em7 (nocturnal minor)
+    var bassRoots=[33,41,36,40];
+    var pent=[57,60,62,64,67,69]; // music-box bells (A C D E G A) — inside the minor world
     var updaters=[];
     function mtf(m){ return 440*Math.pow(2,(m-69)/12); }
     function ensure(){
@@ -566,12 +566,12 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
       var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return false;
       ac=new AC();
       master=ac.createGain(); master.gain.value=muted?0:vol;
-      lp=ac.createBiquadFilter(); lp.type="lowpass"; lp.frequency.value=2200;
+      lp=ac.createBiquadFilter(); lp.type="lowpass"; lp.frequency.value=1800;
       master.connect(lp); lp.connect(ac.destination);
       // dedicated SFX bus for beeps, straight to output (bypasses the warm lowpass + music mute)
       sfxOut=ac.createGain(); sfxOut.gain.value=0.9; sfxOut.connect(ac.destination);
       // tape-warble flutter LFO, shared by pads and bells
-      flutter=ac.createOscillator(); flutter.type="sine"; flutter.frequency.value=0.55;
+      flutter=ac.createOscillator(); flutter.type="sine"; flutter.frequency.value=0.4;
       flutterOut=ac.createGain(); flutterOut.gain.value=4; flutter.connect(flutterOut); flutter.start();
       // dreamy feedback delay send
       delayIn=ac.createGain();
