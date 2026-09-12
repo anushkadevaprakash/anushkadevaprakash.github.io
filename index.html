@@ -152,6 +152,7 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
   .win.dialog{margin:12px auto;width:auto;max-width:340px;}
   .win .body{padding:10px 12px;}
   .wordart{font-size:30px;}.marquee{font-size:15px;}
+  #saverHint{font-size:13px;letter-spacing:1px;}
 }
 @media (prefers-reduced-motion:reduce){
   .marquee span,.blink,#player .eq.playing i{animation:none !important;}
@@ -185,7 +186,7 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
 #saver{position:fixed;inset:0;z-index:99999;background:#000;display:none;cursor:none;}
 #saver.on{display:block;}
 #saverCv{position:absolute;inset:0;width:100%;height:100%;display:block;image-rendering:pixelated;}
-#saverHint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-family:var(--pixel);font-size:18px;color:#ffd0e8;opacity:.9;letter-spacing:2px;text-shadow:0 0 6px rgba(255,143,199,.5);}
+#saverHint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);white-space:nowrap;font-family:var(--pixel);font-size:18px;color:#ffd0e8;opacity:.9;letter-spacing:2px;text-shadow:0 0 6px rgba(255,143,199,.5);}
 /* ===== papers ===== */
 #papers .body{background:#ffe3f1;color:#ff1493;font-family:var(--sys);}
 .pub{border:2px inset var(--pink-light);background:#fff;padding:12px 14px;margin:8px 0;color:#ff1493;}
@@ -259,15 +260,8 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
         <span class="m">C:\work\&gt;</span> type work.log<br><br>
         <span class="c">[ FOCUS ]</span><br>
         &nbsp;Offensive security for aerospace.<br>
-        &nbsp;RF-denied, GPS-denied, degraded comms environments.<br>
-        &nbsp;UAVs, satellites, and the links between.<br><br>
-        <span class="c">[ HANDS ON ]</span><br>
-        &nbsp;RF &amp; SDR &nbsp;&mdash;&nbsp; signal capture, demodulation, protocol analysis<br>
-        &nbsp;Networks &nbsp;&mdash;&nbsp; traffic analysis, link exploitation, telemetry<br>
-        &nbsp;Firmware &nbsp;&mdash;&nbsp; extraction, reverse engineering, patching<br>
-        &nbsp;Hardware &nbsp;&mdash;&nbsp; UART/JTAG, bus sniffing, side channels<br>
-        &nbsp;Software &nbsp;&mdash;&nbsp; tooling, automation, exploit development<br>
-        &nbsp;Ham radio &nbsp;&mdash;&nbsp; satellite downlinks, digital modes, propagation<br><br>
+        &nbsp;<span style="white-space:nowrap">RF-denied, GPS-denied, degraded comms environments.</span><br>
+        &nbsp;Drones, satellites, and the links between.<br><br>
         <span class="c">[ FOR FUNSIES ]</span><br>
         &nbsp;Bug bounty programs<br>
         &nbsp;Vulnerability disclosure<br>
@@ -311,7 +305,6 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
       <a class="big-link" href="https://www.linkedin.com/in/anushkadevaprakash/" target="_blank" rel="noopener noreferrer">&#9656; LinkedIn</a>
       <a class="big-link" href="https://anushkadevaprakash.substack.com/" target="_blank" rel="noopener noreferrer">&#9656; Substack</a>
       <a class="big-link" href="https://www.goodreads.com/anushkadevaprakash" target="_blank" rel="noopener noreferrer">&#9656; Goodreads</a>
-      <a class="big-link" href="https://x.com/nushdevaprakash" target="_blank" rel="noopener noreferrer">&#9656; X</a>
       <hr class="rainbow">
       <p style="font-family:var(--pixel);font-size:18px;color:#ff1493;text-align:center">Catch me by the water hole</p>
       <p style="text-align:center;margin-top:12px">
@@ -357,7 +350,7 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
           <figure><img src="https://services.swpc.noaa.gov/images/boulder-magnetometer.png" data-base="https://services.swpc.noaa.gov/images/boulder-magnetometer.png" alt="Ground magnetometer trace" loading="eager"><figcaption>Magnetometer trace</figcaption></figure>
         </div>
         <div class="pcontrols"><button class="pbtn" id="skyRefresh">&#8635; Refresh feed</button></div>
-        <p class="subtle">Images: NOAA SWPC, public domain. Source refreshes every few minutes.</p>
+        <p class="subtle" style="text-align:center">Images: NOAA SWPC, public domain. Source refreshes every few minutes.</p>
       </div>
 
       <div class="skypanel" id="panel-adsb" role="tabpanel" style="display:none">
