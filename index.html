@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=VT323&family=Jua&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bubble-pink:#ff8fc7;--hot:#ff1493;--deep:#c9006e;--pink-light:#ffd9ec;--pink-pale:#fff0f7;
+  --bubble-pink:#ff8fc7;--hot:#ff1493;--deep:#c9006e;--pink-light:#ffd9ec;--pink-pale:#fff0f7;--gum:#ff6fb5;
   --pink-lo:#e06aa4;--pink-lolo:#7a0a40;--face:#ffd0e8;--hi:#ffffff;--ink:#000000;
   --sys:Tahoma,"MS Sans Serif",Geneva,Verdana,sans-serif;--pixel:"VT323",monospace;--bubble:"Jua","Comic Sans MS",cursive;
 }
@@ -36,7 +36,7 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
 .icon .glyph{display:block;margin:0 auto 4px;line-height:0;filter:drop-shadow(2px 2px 0 rgba(122,10,64,.6));}
 .icon .glyph svg,#start .logo svg,.mi .g svg{display:inline-block;vertical-align:middle;}
 .icon .cap{display:inline;padding:1px 3px;}
-.icon:focus-visible .cap,.icon:hover .cap{background:#ff1493;color:#fff;outline:1px dotted #fff;text-shadow:none;}
+.icon:focus-visible .cap,.icon:hover .cap{background:var(--gum);color:#fff;outline:1px dotted #fff;text-shadow:none;}
 .icon:focus{outline:none;}
 
 /* ===== WINDOWS ===== */
@@ -57,6 +57,7 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
 .win .bar button[data-min]::before{content:"_";display:block;transform:translateY(-3px);}
 .win .bar button[data-max]{line-height:0;}
 .win .bar button[data-max]::before{content:"\25A1";display:block;transform:translateY(-1px);}
+.win .bar button:hover{background:var(--gum);color:#fff;}
 .win .bar button:active{border-color:var(--pink-lolo) var(--hi) var(--hi) var(--pink-lolo);}
 .win .menu{display:flex;gap:12px;padding:2px 8px;background:var(--face);font-size:12px;border-bottom:1px solid var(--pink-lo);}
 .win .menu u{text-decoration:underline;}
@@ -78,7 +79,7 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
 .term{font-family:var(--pixel);font-size:19px;background:#000;color:#ff8fc7;padding:10px 12px;border:2px inset var(--pink-light);line-height:1.25;}
 .term .c{color:#fff;}.term .m{color:#ff1493;}
 .big-link{font-family:var(--bubble);font-size:22px;color:#ff1493;text-decoration:underline;display:block;margin:8px 0;}
-.big-link:hover{color:#c9006e;}
+.big-link:hover{color:var(--gum);}
 .counter{display:inline-flex;gap:2px;background:#000;padding:3px;border:2px inset var(--pink-light);}
 .counter b{background:#111;color:#ff69b4;font-family:var(--pixel);font-size:20px;width:16px;text-align:center;border:1px solid #333;}
 .tag{display:inline-block;background:#ff1493;color:#fff;font-family:var(--pixel);font-size:16px;padding:1px 6px;}
@@ -127,7 +128,7 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
 #startmenu .list{flex:1;padding:3px;}
 #startmenu .mi{display:flex;align-items:center;gap:10px;padding:6px 8px;font-size:13px;}
 #startmenu .mi .g{width:22px;text-align:center;line-height:0;}
-#startmenu .mi:hover{background:#ff1493;color:#fff;}
+#startmenu .mi:hover{background:var(--gum);color:#fff;}
 
 /* ===== RESPONSIVE ===== */
 #progToggle{display:none;}
@@ -195,14 +196,15 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
 .pub .sub{font-family:var(--pixel);font-size:13px;color:#ff1493;font-style:normal;margin-bottom:6px;}
 .pub-meta{font-size:12px;color:#ff1493;margin-bottom:8px;}
 .pub-meta a{color:#ff1493;}
+.pub-meta a:hover{color:var(--gum);}
 .pub p{font-size:14px;line-height:1.5;margin:0 0 10px;color:#ff1493;}
 .pub-actions a{display:inline-block;margin-right:12px;font-size:13px;font-weight:bold;color:#ff1493;text-decoration:none;}
-.pub-actions a:hover{text-decoration:underline;}
+.pub-actions a:hover{text-decoration:underline;color:var(--gum);}
 #welcome .intro{font-family:var(--pixel);font-size:18px;color:#ff1493;line-height:1.35;text-align:left;margin:10px 2px 4px;}
 #welcome .intro p{margin:0 0 8px;}
 #welcome .intro p:last-child{margin-bottom:0;}
 #welcome .intro a{color:var(--hot);text-decoration:underline;}
-#welcome .intro a:hover{color:var(--deep);}
+#welcome .intro a:hover{color:var(--gum);}
 /* window entrance/exit animation (all programs, desktop + mobile) */
 @keyframes winIn{from{opacity:0;}to{opacity:1;}}
 .win.open{animation:winIn .5s ease-out both;}
@@ -260,7 +262,7 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
       <div class="term">
         <span class="m">C:\work\&gt;</span> type work.log<br><br>
         <span class="c">[ FOCUS ]</span><br>
-        <span style="display:block;padding-left:1ch;text-indent:0;">Offensive security for drones, satellites, and RF links in contested environments.</span><br>
+        <span style="display:block;padding-left:1ch;text-indent:0;">Offensive security for RF links, drones and satellites in contested environments.</span><br>
         <span class="c">[ FOR FUNSIES ]</span><br>
         &nbsp;Bug bounty programs<br>
         &nbsp;Vulnerability disclosure<br>
