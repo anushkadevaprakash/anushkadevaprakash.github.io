@@ -215,9 +215,10 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
 .win.restoring{animation:winIn .5s ease-out both;}
 @media (prefers-reduced-motion:reduce){.win.open,.win.closing,.win.minimizing,.win.restoring{animation:none;}}
 /* maximised windows: fill the page and centre short content */
-.win[data-maxed="1"] .body{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:auto;}
-.win[data-maxed="1"] .body > *{width:100%;max-width:1000px;flex-shrink:0;}
-.win[data-maxed="1"] .hero-pic{margin:14px auto 0;}
+.win[data-maxed="1"] .body{flex:1 1 auto;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;overflow:auto;}
+.win[data-maxed="1"] .body > *{width:100%;flex-shrink:0;}
+.win[data-maxed="1"] .intro{text-align:left;}
+.win[data-maxed="1"] .hero-pic{width:fit-content;max-width:100%;margin:14px 0 0;align-self:flex-start;}
 .win[data-maxed="1"] .hero-pic img{max-height:420px;}
 /* skywatch has a grid + iframe, so maximise it as normal flow, not force-centred */
 #sky[data-maxed="1"] .body{display:block;}
