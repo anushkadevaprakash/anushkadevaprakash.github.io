@@ -91,13 +91,49 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
 .pcontrols{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;margin:6px 0;}
 .pbtn{font-family:var(--sys);font-size:12px;padding:4px 12px;background:var(--face);color:#000;border:2px solid;border-color:var(--hi) var(--pink-lolo) var(--pink-lolo) var(--hi);box-shadow:inset -1px -1px 0 var(--pink-lo);cursor:pointer;}
 .pbtn:active{border-color:var(--pink-lolo) var(--hi) var(--hi) var(--pink-lolo);}
-#player .body{background:#000;color:#ff8fc7;font-family:var(--pixel);font-size:18px;text-align:center;}
-#player .eq{display:flex;gap:3px;justify-content:center;align-items:flex-end;height:34px;margin:2px 0 10px;}
-#player .eq i{width:6px;height:6px;background:linear-gradient(#ffd9ec,#ff1493);}
-#player .eq.playing i{animation:eqb .9s ease-in-out infinite;}
-#player .eq i:nth-child(2){animation-delay:.12s}#player .eq i:nth-child(3){animation-delay:.28s}#player .eq i:nth-child(4){animation-delay:.05s}#player .eq i:nth-child(5){animation-delay:.34s}#player .eq i:nth-child(6){animation-delay:.18s}#player .eq i:nth-child(7){animation-delay:.42s}
+#playlist .body{background:#000;color:#ff8fc7;font-family:var(--pixel);font-size:18px;text-align:center;}
+#playlist .plnote{font-size:15px;color:#ffb3d9;margin:2px 0 8px;text-align:left;}
+#playlist .ytwrap{position:relative;width:100%;padding-top:56.25%;background:#12040c;border:2px inset var(--pink-light);margin-bottom:8px;}
+#playlist .ytwrap.hidden{display:none;}
+#playlist .ytwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+#playlist .nowplaying{font-size:14px;color:#ffb3d9;text-align:left;margin-bottom:6px;min-height:1.2em;}
+#playlist .tracklist{list-style:none;margin:0;padding:0;text-align:left;counter-reset:tk;max-height:210px;overflow-y:auto;border:2px inset var(--pink-light);background:#150009;}
+#playlist .tracklist::-webkit-scrollbar{width:12px;}
+#playlist .tracklist::-webkit-scrollbar-track{background:#2a0016;}
+#playlist .tracklist::-webkit-scrollbar-thumb{background:#ff1493;border:2px solid #2a0016;}
+#playlist .tracklist{scrollbar-width:thin;scrollbar-color:#ff1493 #2a0016;}
+#playlist .tracklist li{counter-increment:tk;border-top:1px dashed #7a0a40;display:flex;align-items:stretch;}
+#playlist .tracklist li:first-child{border-top:0;}
+#playlist .tracklist li.playing{background:#3d0020;}
+#playlist .tk-play{flex:1 1 auto;display:flex;align-items:baseline;gap:8px;padding:8px 6px;background:transparent;border:0;cursor:pointer;color:#ff8fc7;font-family:var(--pixel);text-align:left;}
+#playlist .tk-play:hover,#playlist .tk-play:focus{background:#ff1493;color:#fff;outline:none;}
+#playlist .tk-play::before{content:counter(tk,decimal-leading-zero);font-size:13px;color:#ff5fb0;flex:0 0 auto;}
+#player li.playing .tk-play::before{content:"\25B6";color:#ffd9ec;}
+#playlist .tk-play:hover::before,#playlist .tk-play:focus::before{color:#ffd9ec;}
+#playlist .tk-title{font-size:16px;flex:1 1 auto;}
+#playlist .tk-artist{font-size:13px;color:#ff5fb0;flex:0 0 auto;}
+#playlist .tk-play:hover .tk-artist,#playlist .tk-play:focus .tk-artist{color:#ffd9ec;}
+#playlist .tk-open{flex:0 0 auto;display:flex;align-items:center;padding:0 10px;color:#ff5fb0;text-decoration:none;font-size:16px;border-left:1px dashed #7a0a40;}
+#playlist .tk-open:hover,#playlist .tk-open:focus{background:#ff1493;color:#fff;outline:none;}
+#playlist .plfoot{font-size:13px;color:#ff5fb0;margin-top:10px;text-align:left;}
+#playlist .eq{display:flex;gap:3px;justify-content:center;align-items:flex-end;height:34px;margin:2px 0 10px;}
+#playlist .eq i{width:6px;height:6px;background:linear-gradient(#ffd9ec,#ff1493);}
+#playlist .eq.playing i{animation:eqb .9s ease-in-out infinite;}
+#playlist .eq i:nth-child(2){animation-delay:.12s}#playlist .eq i:nth-child(3){animation-delay:.28s}#playlist .eq i:nth-child(4){animation-delay:.05s}#playlist .eq i:nth-child(5){animation-delay:.34s}#playlist .eq i:nth-child(6){animation-delay:.18s}#playlist .eq i:nth-child(7){animation-delay:.42s}
 @keyframes eqb{0%,100%{height:6px}50%{height:30px}}
 #vol{accent-color:#ff1493;width:96px;}
+
+/* player.exe: the original in-browser generative music */
+#player .body{background:#000;color:#ff8fc7;font-family:var(--pixel);font-size:18px;text-align:center;}
+#player .music-title{font-size:22px;color:#ffd9ec;margin:2px 0 4px;text-transform:uppercase;letter-spacing:1px;}
+#player .music-status{font-size:15px;color:#ff8fc7;min-height:1.3em;margin-bottom:8px;}
+#player .music-note{font-size:13px;line-height:1.25;color:#ff5fb0;margin-top:10px;text-align:left;}
+#player .music-volume{display:flex;justify-content:center;align-items:center;gap:8px;font-size:14px;color:#ffb3d9;margin-top:8px;}
+#player .music-eq{display:flex;gap:3px;justify-content:center;align-items:flex-end;height:34px;margin:2px 0 10px;}
+#player .music-eq i{width:6px;height:6px;background:linear-gradient(#ffd9ec,#ff1493);}
+#player .music-eq.playing i{animation:eqb .9s ease-in-out infinite;}
+#player .music-eq i:nth-child(2){animation-delay:.12s}#player .music-eq i:nth-child(3){animation-delay:.28s}#player .music-eq i:nth-child(4){animation-delay:.05s}#player .music-eq i:nth-child(5){animation-delay:.34s}#player .music-eq i:nth-child(6){animation-delay:.18s}#player .music-eq i:nth-child(7){animation-delay:.42s}
+
 
 /* ===== TASKBAR ===== */
 #taskbar{position:fixed;left:0;right:0;bottom:0;height:30px;z-index:1000;display:flex;align-items:center;gap:4px;padding:2px 4px;background:var(--face);border-top:2px solid var(--hi);}
@@ -160,8 +196,8 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
   .term{font-size:19px;padding:10px 12px;overflow-wrap:break-word;}
 }
 @media (prefers-reduced-motion:reduce){
-  .marquee span,.blink,#player .eq.playing i{animation:none !important;}
-  #player .eq.playing i{height:16px;}
+  .marquee span,.blink,#playlist .eq.playing i{animation:none !important;}
+  #playlist .eq.playing i{height:16px;}
   .blink{opacity:1 !important;}.marquee span{padding-left:0;}
 }
 
@@ -237,6 +273,7 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
     <button class="icon" role="menuitem" data-open="papers"><span class="glyph"><svg viewBox="0 0 24 24" width="32" height="32"><path d="M6 3h9l4 4v14H6z" fill="#fff0f7" stroke="#7a0a40" stroke-width="1"/><path d="M15 3v4h4" fill="none" stroke="#7a0a40" stroke-width="1"/><path d="M8.5 11h8M8.5 14h8M8.5 17h5" stroke="#ff1493" stroke-width="1"/></svg></span><span class="cap">research.exe</span></button>
     <button class="icon" role="menuitem" data-open="signals"><span class="glyph"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#ff1493" stroke-width="2" stroke-linecap="round"><path d="M12 21V10"/><circle cx="12" cy="8" r="2" fill="#ff8fc7" stroke="#7a0a40"/><path d="M6 5a8 8 0 000 10M18 5a8 8 0 010 10" stroke="#ff5fb0"/></svg></span><span class="cap">signals.dat</span></button>
     <button class="icon" role="menuitem" data-open="player"><span class="glyph"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#ff1493" stroke-width="2" stroke-linecap="round"><path d="M9 18V5l10-2v13"/><circle cx="6.5" cy="18" r="2.5" fill="#ff8fc7"/><circle cx="16.5" cy="16" r="2.5" fill="#ff8fc7"/></svg></span><span class="cap">player.exe</span></button>
+    <button class="icon" role="menuitem" data-open="playlist"><span class="glyph"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#ff1493" stroke-width="1.8" stroke-linecap="round"><path d="M8 6h11M8 12h11M8 18h11"/><circle cx="4" cy="6" r="1.4" fill="#ff8fc7"/><circle cx="4" cy="12" r="1.4" fill="#ff8fc7"/><circle cx="4" cy="18" r="1.4" fill="#ff8fc7"/></svg></span><span class="cap">playlist.exe</span></button>
     <button class="icon" role="menuitem" data-open="sky"><span class="glyph"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#ff1493" stroke-width="1.8"><circle cx="12" cy="12" r="9" fill="#12040c"/><circle cx="12" cy="12" r="5" stroke="#ff5fb0" stroke-width="1"/><path d="M12 12L19 7" stroke="#ff8fc7" stroke-width="1.4"/><circle cx="16" cy="9" r="1.3" fill="#ffd9ec" stroke="none"/></svg></span><span class="cap">skywatch.exe</span></button>
     <button class="icon" role="menuitem" data-open="morse"><span class="glyph"><svg viewBox="0 0 24 24" width="32" height="32"><circle cx="4" cy="12" r="2.3" fill="#ff1493"/><rect x="8" y="10.1" width="7" height="3.8" fill="#ff8fc7"/><circle cx="19" cy="12" r="2.3" fill="#ff1493"/></svg></span><span class="cap">morse.exe</span></button>
   </div>
@@ -324,19 +361,46 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
     </div>
   </section>
 
-  <!-- PLAYER -->
-  <section class="win" id="player" style="width:300px;left:calc(50% + 40px);top:250px;" aria-label="music player window">
-    <div class="bar"><span class="ttl">player.exe</span>
+  <!-- PLAYER: original generative music -->
+  <section class="win" id="player" style="width:330px;left:calc(50% + 40px);top:250px;" aria-label="original music player window">
+    <div class="bar"><span class="ttl">player.exe - water hole radio</span>
+      <span class="ctrls"><button data-min aria-label="minimise"></button><button data-max aria-label="maximise"></button><button data-close aria-label="close">&#10005;</button></span></div>
+    <div class="body">
+      <div class="music-eq" id="musicEq"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="music-title">water hole radio</div>
+      <div class="music-status" id="musicStatus">Press anywhere once to tune in.</div>
+      <div class="pcontrols">
+        <button class="pbtn" id="musicToggle" type="button">&#9654; Play</button>
+        <button class="pbtn" id="musicMute" type="button">Mute</button>
+      </div>
+      <label class="music-volume" for="vol">Volume <input id="vol" type="range" min="0" max="1" step="0.05" value="0.50" aria-label="Music volume"></label>
+      <div class="music-note">Original generative lo-fi jazzhop, made in-browser. No audio file required.</div>
+    </div>
+  </section>
+
+  <!-- PLAYLIST -->
+  <section class="win" id="playlist" style="width:340px;left:calc(50% + 390px);top:250px;" aria-label="curated playlist window">
+    <div class="bar"><span class="ttl">playlist.exe - the rotation</span>
       <span class="ctrls"><button data-min aria-label="minimise"></button><button data-max aria-label="maximise"></button><button data-close aria-label="close">&#10005;</button></span></div>
     <div class="body">
       <div class="eq" id="eq"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      <div>Now playing: <b>music.sys</b></div>
-      <div class="pcontrols">
-        <button class="pbtn" id="playBtn">&#9654; Play</button>
-        <button class="pbtn" id="muteBtn">Mute</button>
-      </div>
-      <div class="pcontrols"><span style="font-family:var(--pixel);font-size:15px">vol</span><input id="vol" type="range" min="0" max="100" value="50"></div>
-      <div style="color:#ff8fc7;font-size:14px">Generated live in your browser. No local files required.</div>
+      <div class="plnote">On rotation at the water hole this month -</div>
+      <div class="ytwrap"><div id="ytplayer"></div></div>
+      <div class="nowplaying" id="nowPlaying">Nothing playing yet. Pick a track.</div>
+      <ol class="tracklist" id="tracklist">
+        <li data-vid="oVLbPMFr1cE"><button type="button" class="tk-play" aria-label="Play track 01"><span class="tk-title">Track 01</span><span class="tk-artist">YouTube</span></button><a href="https://youtu.be/oVLbPMFr1cE" target="_blank" rel="noopener noreferrer" class="tk-open" aria-label="Open track 01 on YouTube" title="Open on YouTube">&#8599;</a></li>
+        <li data-vid="MVuX0FrR-hA"><button type="button" class="tk-play" aria-label="Play track 02"><span class="tk-title">Track 02</span><span class="tk-artist">YouTube</span></button><a href="https://www.youtube.com/watch?v=MVuX0FrR-hA&list=RDMVuX0FrR-hA&start_radio=1" target="_blank" rel="noopener noreferrer" class="tk-open" aria-label="Open track 02 on YouTube" title="Open on YouTube">&#8599;</a></li>
+        <li data-vid="l8_cHycJh7U"><button type="button" class="tk-play" aria-label="Play track 03"><span class="tk-title">Track 03</span><span class="tk-artist">YouTube</span></button><a href="https://www.youtube.com/watch?v=l8_cHycJh7U" target="_blank" rel="noopener noreferrer" class="tk-open" aria-label="Open track 03 on YouTube" title="Open on YouTube">&#8599;</a></li>
+        <li data-vid="HNSxfWXhM7A"><button type="button" class="tk-play" aria-label="Play track 04"><span class="tk-title">Track 04</span><span class="tk-artist">YouTube</span></button><a href="https://www.youtube.com/watch?v=HNSxfWXhM7A" target="_blank" rel="noopener noreferrer" class="tk-open" aria-label="Open track 04 on YouTube" title="Open on YouTube">&#8599;</a></li>
+        <li data-vid="TZELngMtJwY"><button type="button" class="tk-play" aria-label="Play track 05"><span class="tk-title">Track 05</span><span class="tk-artist">YouTube</span></button><a href="https://www.youtube.com/watch?v=TZELngMtJwY" target="_blank" rel="noopener noreferrer" class="tk-open" aria-label="Open track 05 on YouTube" title="Open on YouTube">&#8599;</a></li>
+        <li data-vid="x53OGmkT-eM"><button type="button" class="tk-play" aria-label="Play track 06"><span class="tk-title">Track 06</span><span class="tk-artist">YouTube</span></button><a href="https://www.youtube.com/watch?v=x53OGmkT-eM&list=PL8lnzGqt0RkJpw6mD1aNuIFkqMQPrfIAp&index=4" target="_blank" rel="noopener noreferrer" class="tk-open" aria-label="Open track 06 on YouTube" title="Open on YouTube">&#8599;</a></li>
+        <li data-vid="gJn81ivTXZg"><button type="button" class="tk-play" aria-label="Play track 07"><span class="tk-title">Track 07</span><span class="tk-artist">YouTube</span></button><a href="https://www.youtube.com/watch?v=gJn81ivTXZg&list=PL8lnzGqt0RkJpw6mD1aNuIFkqMQPrfIAp&index=21" target="_blank" rel="noopener noreferrer" class="tk-open" aria-label="Open track 07 on YouTube" title="Open on YouTube">&#8599;</a></li>
+        <li data-vid="MgOIb1FI9zY"><button type="button" class="tk-play" aria-label="Play track 08"><span class="tk-title">Track 08</span><span class="tk-artist">YouTube</span></button><a href="https://www.youtube.com/watch?v=MgOIb1FI9zY&list=PL8lnzGqt0RkJpw6mD1aNuIFkqMQPrfIAp&index=111" target="_blank" rel="noopener noreferrer" class="tk-open" aria-label="Open track 08 on YouTube" title="Open on YouTube">&#8599;</a></li>
+        <li data-vid="XZMgJ0URr2I"><button type="button" class="tk-play" aria-label="Play track 09"><span class="tk-title">Track 09</span><span class="tk-artist">YouTube</span></button><a href="https://youtu.be/XZMgJ0URr2I" target="_blank" rel="noopener noreferrer" class="tk-open" aria-label="Open track 09 on YouTube" title="Open on YouTube">&#8599;</a></li>
+        <li data-vid="hfC8deeAgjY"><button type="button" class="tk-play" aria-label="Play track 10"><span class="tk-title">Track 10</span><span class="tk-artist">YouTube</span></button><a href="https://youtu.be/hfC8deeAgjY" target="_blank" rel="noopener noreferrer" class="tk-open" aria-label="Open track 10 on YouTube" title="Open on YouTube">&#8599;</a></li>
+        <li data-vid="lJZTgynPGT8"><button type="button" class="tk-play" aria-label="Play track 11"><span class="tk-title">Track 11</span><span class="tk-artist">YouTube</span></button><a href="https://youtu.be/lJZTgynPGT8" target="_blank" rel="noopener noreferrer" class="tk-open" aria-label="Open track 11 on YouTube" title="Open on YouTube">&#8599;</a></li>
+      </ol>
+      <div class="plfoot">Plays inline via YouTube. Tap the arrow to open it there.</div>
     </div>
   </section>
 
@@ -394,7 +458,7 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
 <div id="taskbar">
   <button id="start" aria-haspopup="true" aria-expanded="false"> Start</button>
   <div class="tasks" id="tasks" aria-label="open windows"></div>
-  <div class="tray"><span class="ti" id="trayPlay" role="button" tabindex="0" aria-label="Play or pause music" title="Play music" style="cursor:pointer;color:#000">&#9654;</span><span class="ti" id="traySky" role="button" tabindex="0" data-open="sky" aria-label="Open skywatch" title="Open skywatch.exe" style="cursor:pointer">&#128225;</span><span id="clock">--:--</span></div>
+  <div class="tray"><span class="ti" id="trayPlay" role="button" tabindex="0" aria-label="Play or pause player.exe" title="player.exe: play" style="cursor:pointer;color:#000">&#9654;</span><span class="ti" id="traySky" role="button" tabindex="0" data-open="sky" aria-label="Open skywatch" title="Open skywatch.exe" style="cursor:pointer">&#128225;</span><span id="clock">--:--</span></div>
 </div>
 
 <div id="dogTrack" aria-hidden="true"><div id="alienDog"><svg viewBox="0 0 22 17" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="0" width="2" height="2" fill="#ff5fb0"/><rect x="7" y="0" width="1" height="1" fill="#ffd9ec"/><rect x="12" y="0" width="2" height="2" fill="#ff5fb0"/><rect x="12" y="0" width="1" height="1" fill="#ffd9ec"/><rect x="8" y="2" width="1" height="1" fill="#c9006e"/><rect x="12" y="2" width="1" height="1" fill="#c9006e"/><rect x="5" y="3" width="3" height="4" fill="#c9006e"/><rect x="0" y="7" width="2" height="3" fill="#c9006e"/><rect x="2" y="8" width="14" height="5" fill="#ff7ab8"/><rect x="7" y="3" width="9" height="7" fill="#ff7ab8"/><rect x="15" y="6" width="5" height="4" fill="#ff7ab8"/><rect x="19" y="6" width="1" height="2" fill="#ff1493"/><rect x="16" y="9" width="3" height="1" fill="#c9006e"/><rect x="11" y="5" width="3" height="3" fill="#ffffff"/><rect x="12" y="6" width="2" height="2" fill="#3a0020"/><rect x="4" y="9" width="2" height="2" fill="#ffd0e8"/><rect x="9" y="11" width="1" height="1" fill="#ffd0e8"/><g class="legA"><rect x="4" y="13" width="2" height="3" fill="#c9006e"/><rect x="12" y="13" width="2" height="3" fill="#c9006e"/></g><g class="legB"><rect x="6" y="13" width="2" height="3" fill="#c9006e"/><rect x="14" y="13" width="2" height="3" fill="#c9006e"/></g></svg></div></div>
@@ -409,6 +473,7 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
     <div class="mi" role="menuitem" data-open="papers"><span class="g"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 3h9l4 4v14H6z" fill="#fff0f7" stroke="#7a0a40" stroke-width="1"/><path d="M15 3v4h4" fill="none" stroke="#7a0a40" stroke-width="1"/></svg></span> Papers</div>
     <div class="mi" role="menuitem" data-open="signals"><span class="g"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ff1493" stroke-width="2" stroke-linecap="round"><path d="M12 21V10"/><circle cx="12" cy="8" r="2" fill="#ff8fc7" stroke="#7a0a40"/><path d="M6 5a8 8 0 000 10M18 5a8 8 0 010 10" stroke="#ff5fb0"/></svg></span> Signals</div>
     <div class="mi" role="menuitem" data-open="player"><span class="g"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ff1493" stroke-width="2" stroke-linecap="round"><path d="M9 18V5l10-2v13"/><circle cx="6.5" cy="18" r="2.5" fill="#ff8fc7"/><circle cx="16.5" cy="16" r="2.5" fill="#ff8fc7"/></svg></span> Player</div>
+    <div class="mi" role="menuitem" data-open="playlist"><span class="g"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ff1493" stroke-width="1.8" stroke-linecap="round"><path d="M8 6h11M8 12h11M8 18h11"/><circle cx="4" cy="6" r="1.4" fill="#ff8fc7"/><circle cx="4" cy="12" r="1.4" fill="#ff8fc7"/><circle cx="4" cy="18" r="1.4" fill="#ff8fc7"/></svg></span> Playlist</div>
     <div class="mi" role="menuitem" data-open="sky"><span class="g"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ff1493" stroke-width="1.8"><circle cx="12" cy="12" r="9" fill="#12040c"/><circle cx="12" cy="12" r="5" stroke="#ff5fb0" stroke-width="1"/><path d="M12 12L19 7" stroke="#ff8fc7" stroke-width="1.4"/><circle cx="16" cy="9" r="1.3" fill="#ffd9ec" stroke="none"/></svg></span> Skywatch</div>
     <div class="mi" role="menuitem" data-open="morse"><span class="g"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="4" cy="12" r="2.3" fill="#ff1493"/><rect x="8" y="10.1" width="7" height="3.8" fill="#ff8fc7"/><circle cx="19" cy="12" r="2.3" fill="#ff1493"/></svg></span> Morse</div>
   </div>
@@ -732,41 +797,179 @@ a,button,.icon,.mi,[data-open]{cursor:pointer;}
     return {toggle:toggle,play:play,pause:pause,toggleMute:toggleMute,setVol:setVol,onUpdate:onUpdate,beep:beep};
   })();
 
-  /* ---------- player wiring ---------- */
+  /* ---------- player.exe wiring + first-gesture autoplay unlock ---------- */
   (function(){
-    var playBtn=document.getElementById("playBtn"), muteBtn=document.getElementById("muteBtn"),
-        vol=document.getElementById("vol"), eq=document.getElementById("eq"), tray=document.getElementById("trayPlay");
-    if(playBtn) playBtn.addEventListener("click", function(){ Music.toggle(); });
-    if(muteBtn) muteBtn.addEventListener("click", function(){ Music.toggleMute(); });
-    if(vol) vol.addEventListener("input", function(){ Music.setVol(vol.value/100); });
-    if(tray){ tray.addEventListener("click", function(){ Music.toggle(); });
-      tray.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); Music.toggle(); } }); }
-    if(vol) Music.setVol(vol.value/100);
-    Music.onUpdate(function(playing,muted){
-      if(playBtn) playBtn.innerHTML = playing ? "&#10074;&#10074; Pause" : "&#9654; Play";
-      if(muteBtn) muteBtn.textContent = muted ? "Unmute" : "Mute";
+    var toggle=document.getElementById("musicToggle"),
+        mute=document.getElementById("musicMute"),
+        vol=document.getElementById("vol"),
+        eq=document.getElementById("musicEq"),
+        status=document.getElementById("musicStatus"),
+        tray=document.getElementById("trayPlay");
+    if(!Music) return;
+
+    var firstGestureDone=false;
+    function render(playing, muted){
       if(eq) eq.classList.toggle("playing", playing && !muted);
-      if(tray){ tray.innerHTML = playing ? "&#10074;&#10074;" : "&#9654;"; tray.style.color = playing ? "#ff1493" : "#000"; tray.title = playing ? "Pause music" : "Play music"; }
+      if(toggle) toggle.innerHTML = playing ? "&#10074;&#10074; Pause" : "&#9654; Play";
+      if(mute) mute.textContent = muted ? "Unmute" : "Mute";
+      if(status) status.textContent = playing ? (muted ? "Playing, but muted." : "Now playing: original water hole radio.") : "Paused.";
+      if(tray){
+        tray.innerHTML = playing ? "&#10074;&#10074;" : "&#9654;";
+        tray.style.color = playing ? "#ff1493" : "#000";
+        tray.title = playing ? "player.exe: pause" : "player.exe: play";
+        tray.setAttribute("aria-label", playing ? "Pause player.exe" : "Play player.exe");
+      }
+    }
+    Music.onUpdate(render);
+    render(false,false);
+
+    if(toggle) toggle.addEventListener("click", function(e){ e.preventDefault(); Music.toggle(); });
+    if(mute) mute.addEventListener("click", function(e){ e.preventDefault(); Music.toggleMute(); });
+    if(vol) vol.addEventListener("input", function(){ Music.setVol(parseFloat(vol.value)||0); });
+    if(tray){
+      tray.addEventListener("click", function(e){ e.preventDefault(); Music.toggle(); });
+      tray.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); Music.toggle(); } });
+    }
+
+    function isExplicitMusicControl(target){
+      return target && target.closest && target.closest("#musicToggle,#musicMute,#vol,#trayPlay");
+    }
+    function firstGesture(e){
+      if(firstGestureDone) return;
+      // Explicit player controls handle their own action, preventing a first-click double toggle.
+      if(isExplicitMusicControl(e.target)){ firstGestureDone=true; cleanup(); return; }
+      firstGestureDone=true; cleanup(); Music.play();
+    }
+    function cleanup(){
+      document.removeEventListener("pointerdown", firstGesture, true);
+      document.removeEventListener("keydown", firstKey, true);
+      document.removeEventListener("touchstart", firstGesture, true);
+    }
+    function firstKey(e){
+      if(e.key==="Shift"||e.key==="Control"||e.key==="Alt"||e.key==="Meta"||e.key==="CapsLock"||e.key==="Tab") return;
+      firstGesture(e);
+    }
+    document.addEventListener("pointerdown", firstGesture, true);
+    // touchstart is kept as a fallback for older mobile webviews without Pointer Events.
+    document.addEventListener("touchstart", firstGesture, {capture:true,passive:true});
+    document.addEventListener("keydown", firstKey, true);
+  })();
+
+  /* ---------- playlist wiring (YouTube IFrame) ---------- */
+  (function(){
+    var list=document.getElementById("tracklist"),
+        eq=document.getElementById("eq"),
+        now=document.getElementById("nowPlaying"),
+        wrap=document.querySelector("#playlist .ytwrap"),
+        foot=document.querySelector("#playlist .plfoot");
+    if(!list) return;
+
+    var ytReady=false, player=null, currentLi=null, currentVid=null, isPlaying=false, pendingVid=null;
+    var isLocalFile=(location.protocol === "file:");
+
+    // YouTube rejects iframe playback from file:// pages with Error 153 because
+    // there is no normal HTTP(S) origin/referrer. Keep the local HTML usable
+    // instead of rendering a broken player. The inline player is enabled once
+    // the exact same file is served over http:// or https://.
+    if(isLocalFile){
+      if(wrap) wrap.classList.add("hidden");
+      if(now) now.textContent="Local mode: choose a track to open it on YouTube.";
+      if(foot) foot.textContent="playlist.exe is in local mode. Inline YouTube playback turns on automatically when this page is served over http:// or https://.";
+    } else {
+      (function loadYT(){
+        if(window.YT && window.YT.Player){ onYTReady(); return; }
+        var prev=window.onYouTubeIframeAPIReady;
+        window.onYouTubeIframeAPIReady=function(){ if(typeof prev==="function") prev(); onYTReady(); };
+        var tag=document.createElement("script");
+        tag.src="https://www.youtube.com/iframe_api";
+        document.head.appendChild(tag);
+      })();
+    }
+
+    function onYTReady(){
+      ytReady=true;
+      player=new YT.Player("ytplayer",{
+        height:"100%", width:"100%",
+        playerVars:{ playsinline:1, rel:0, modestbranding:1 },
+        events:{
+          onReady:function(){ if(pendingVid){ var v=pendingVid; pendingVid=null; loadVid(v); } },
+          onStateChange:onState
+        }
+      });
+    }
+
+    function setPlayingUI(on){
+      isPlaying=on;
+      if(eq) eq.classList.toggle("playing", on);
+      if(currentLi){
+        var t=currentLi.querySelector(".tk-title") ? currentLi.querySelector(".tk-title").textContent : "";
+        now.textContent = (on ? "Playing: " : "Paused: ") + t;
+      }
+    }
+
+    function onState(e){
+      var S=YT.PlayerState;
+      if(e.data===S.PLAYING){ if(Music) Music.pause(); setPlayingUI(true); }
+      else if(e.data===S.PAUSED) setPlayingUI(false);
+      else if(e.data===S.ENDED){
+        setPlayingUI(false);
+        // Auto-advance to the next track.
+        var next=currentLi ? currentLi.nextElementSibling : null;
+        if(next){ startLi(next); }
+        else { clearCurrent(); now.textContent="End of the rotation."; }
+      }
+    }
+
+    function clearCurrent(){
+      if(currentLi) currentLi.classList.remove("playing");
+      currentLi=null; currentVid=null; setPlayingUI(false);
+    }
+
+    function loadVid(vid){
+      currentVid=vid;
+      player.loadVideoById(vid); // begins playback
+    }
+
+    function startLi(li){
+      var vid=li.getAttribute("data-vid");
+      if(currentLi) currentLi.classList.remove("playing");
+      currentLi=li; li.classList.add("playing");
+      var t=li.querySelector(".tk-title") ? li.querySelector(".tk-title").textContent : "Track";
+
+      if(isLocalFile){
+        if(now) now.textContent="Opening: "+t;
+        var open=li.querySelector(".tk-open");
+        var href=open && open.href ? open.href : ("https://www.youtube.com/watch?v="+encodeURIComponent(vid));
+        window.open(href,"_blank","noopener,noreferrer");
+        setTimeout(function(){
+          if(currentLi===li){ li.classList.remove("playing"); currentLi=null; }
+          if(now) now.textContent="Local mode: choose a track to open it on YouTube.";
+        },350);
+        return;
+      }
+
+      if(now) now.textContent="Loading: "+t;
+      if(!ytReady || !player || !player.loadVideoById){ pendingVid=vid; return; }
+      loadVid(vid);
+    }
+
+    function togglePlay(){
+      if(!player) return;
+      var st=player.getPlayerState ? player.getPlayerState() : -1;
+      if(st===YT.PlayerState.PLAYING){ player.pauseVideo(); }
+      else { player.playVideo(); }
+    }
+
+    // Click a track: if it is the current one, toggle; otherwise start it.
+    list.addEventListener("click", function(e){
+      var btn=e.target.closest(".tk-play");
+      if(!btn) return; // let the open-arrow link work normally
+      e.preventDefault();
+      var li=btn.closest("li");
+      if(li===currentLi && player){ togglePlay(); }
+      else { startLi(li); }
     });
 
-    // Autostart with fade-in on first interaction. Browsers block audible autoplay
-    // before a user gesture, so this begins on the visitor's first click/tap/key.
-    var kicked=false;
-    function kick(e){
-      if(kicked) return;
-      kicked=true;
-      var t=e&&e.target;
-      // If they clicked an audio control, let its own handler start the music.
-      if(t&&t.closest&&t.closest("#trayPlay,#playBtn,#muteBtn")){ unhook(); return; }
-      Music.play(); unhook();
-    }
-    function unhook(){ ["pointerdown","keydown","touchstart","touchend","click"].forEach(function(ev){ document.removeEventListener(ev,kick,true); }); }
-    ["pointerdown","keydown","touchstart","touchend","click"].forEach(function(ev){ document.addEventListener(ev,kick,true); });
-    // Mobile browsers often suspend the context when the tab is backgrounded; resume on return
-    // only if the user had it playing (do not override a deliberate pause).
-    var wasPlaying=false;
-    Music.onUpdate(function(p){ wasPlaying=p; });
-    document.addEventListener("visibilitychange", function(){ if(!document.hidden && kicked && wasPlaying) Music.play(); });
   })();
 
   /* ---------- skywatch (live RF window) ---------- */
